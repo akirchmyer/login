@@ -1,4 +1,4 @@
-Thanks for considering me for this position! I enjoyed working on this assignment and would love some feedback.
+Thanks for considering me for this position! I enjoyed working on this assignment and would love some feedback for my personal development.
 
 I will be demoing my work at http://kirchmyer.net for the next week or so.
 
