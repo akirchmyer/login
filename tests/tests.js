@@ -48,7 +48,6 @@ define(['login'], function(LoginComponent) {
 		this.stub(window, 'alert');
 
 		// Test with both pw and id
-		console.log(LoginComponent.prototype);
 		LoginComponent.prototype.processForm($form);
 		equal(LoginComponent.prototype.sendRequest.callCount, 1, 'sendRequest called');
 		equal(LoginComponent.prototype.sendRequest.args[0][0], 'apple-id=myid&password=mypw', 'sendRequest called with expected args');
