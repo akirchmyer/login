@@ -4,11 +4,13 @@ require.config({
 
   paths: {
 	"jquery": "../vendor/jquery",
-	"jquery-placeholder": "../vendor/jquery.placeholder",
+	"jquery-placeholder": "../vendor/jquery-plugins/jquery.placeholder",
+	"ajax-mock": "../vendor/jquery-plugins/ajax.mock",
 	"login": "components/login-component"
   },
 
   shim: {
-	"jquery-placeholder":["jquery"]
+	"jquery-placeholder":["jquery"],
+	"ajax-mock":["jquery"]
    }	
 });

@@ -86,23 +86,30 @@ define(['login'], function(LoginComponent) {
 	});
 
 	test("test sendRequest", function() {
-		this.stub($, 'ajax').yieldsTo('success', 'uid=myuid,pw=mypw', 'success');
+		this.stub($, 'ajax').yieldsTo('success', {firstName: 'Sideshow', lastName: 'Bob'}, 'success');
 		this.stub(console, 'log');
+		this.stub(window, 'alert');
 
 		// test success case
 		LoginComponent.prototype.sendRequest('uid=myuid&pw=mypw');
 		equal($.ajax.args[0][0].type, 'POST', 'POST used');
-		equal($.ajax.args[0][0].url, 'api/yoursite.com/login', 'POST sent to expected url');
+		equal($.ajax.args[0][0].url, 'http://api.kirchmyer.net/login/', 'POST sent to expected url');
 		equal($.ajax.args[0][0].data, 'uid=myuid&pw=mypw', 'POST used');
+		equal($.ajax.args[0][0].dataType, 'json', 'data type is json');
+		equal($.ajax.args[0][0].contentType, 'application/json; charset=utf-8', 'content type is correct');
 		equal(console.log.args[0][0], 'success', 'console.log called with success message on success');
+		equal(window.alert.args[0][0], 'Welcome, Sideshow Bob');
 
 		// test error case
-		$.ajax.yieldsTo('error', {}, 'error', 'bad url');
+		$.ajax.yieldsTo('error', {}, 'error', '401 Unauthorized');
 		LoginComponent.prototype.sendRequest('uid=myuid&pw=mypw');
 		equal($.ajax.args[1][0].type, 'POST', 'POST used');
-		equal($.ajax.args[1][0].url, 'api/yoursite.com/login', 'POST sent to expected url');
+		equal($.ajax.args[1][0].url, 'http://api.kirchmyer.net/login/', 'POST sent to expected url');
 		equal($.ajax.args[1][0].data, 'uid=myuid&pw=mypw', 'POST used');
-		equal(console.log.args[1][0], 'error: bad url', 'console.log called with error status and error type on success');
+		equal($.ajax.args[1][0].dataType, 'json', 'data type is json');
+		equal($.ajax.args[1][0].contentType, 'application/json; charset=utf-8', 'content type is correct');
+		equal(console.log.args[1][0], 'error 401 Unauthorized', 'console.log called with error status and error type on success');
+		equal(window.alert.args[1][0], 'Username or password is incorrect.');
 
 	});
 });

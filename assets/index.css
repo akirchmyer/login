@@ -1,49 +1,37 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-}
+  font-family: Arial, Helvetica, sans-serif; }
+
 .info {
-    color: #232323;
-    line-height: 24px;
-    margin: 0 auto 20px;
-    width: 500px;
-}
+  color: #232323;
+  line-height: 24px;
+  margin: 0 auto 20px;
+  width: 500px; }
 
 .login {
-    color: #e8e8e8;
-    background: #232323;
-    margin: 0 auto 30px;
-    width: 500px;
-}
-.login-form {
+  color: #e8e8e8;
+  background: #232323;
+  margin: 0 auto 30px;
+  width: 500px; }
+  .login .login-form {
     margin: 0 auto;
     padding: 26px 0;
-    width: 300px;
-}
-.login-form .login-title {
-    font-size: 14px;
-    line-height: 28px;
-    margin: 0;
-}
-.login-form input {
-    border: none;
-    border-radius: 2px;
-    font-size: 12px;
-    font-weight: bold;
-    height: 30px;
-    margin-top: 14px;
-    width: 100%;
-}
-.login-form .login-id, .login-form .login-password {
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    padding-left: 12px;
-}
-:-ms-input-placeholder {
-    padding-left: 12px;
-}
-.login-form .login-submit {
-    background: #db4a39;
-    color: #e8e8e8;
-    height: 36px;
-}
+    width: 300px; }
+    .login .login-form .login-title {
+      font-size: 14px;
+      line-height: 28px;
+      margin: 0; }
+    .login .login-form input {
+      border: none;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: bold;
+      height: 30px;
+      margin-top: 14px;
+      width: 100%; }
+    .login .login-form .login-submit {
+      background: #db4a39;
+      color: #e8e8e8;
+      height: 36px; }
+    .login .login-form .login-id, .login .login-form .login-password {
+      box-sizing: border-box;
+      padding-left: 12px; }

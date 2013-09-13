@@ -1,5 +1,4 @@
-define(['jquery-placeholder'], function() {
-
+define(['jquery-placeholder', 'ajax-mock'], function() {
 
 /**
  * This file contains the LoginForm component
@@ -80,13 +79,17 @@ login_form.prototype.validatePw = function (pw) {
 login_form.prototype.sendRequest = function (dataString) {
 	$.ajax({
 		type: "POST",
-		url: "api/yoursite.com/login",
+		url: "http://api.kirchmyer.net/login/",
 		data: dataString,
+		dataType: "json",
+		contentType: 'application/json; charset=utf-8',
 		success: function (data, status, jqXHR) {
 			console.log(status);
+			window.alert('Welcome, ' + data.firstName + ' ' + data.lastName);
 		},
 		error: function (jqXHR, status, errorType) {
-			console.log(status + ': ' + errorType);
+			console.log(status + ' ' + errorType);
+			window.alert('Username or password is incorrect.');
 		}
 	});
 };
