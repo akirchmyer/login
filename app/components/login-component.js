@@ -11,20 +11,13 @@ var login_form = function() {};
  */
 login_form.prototype.initialize = function ($form) {
 	var self = this;
-	$('.login-form .login-id').placeholder();
-	$('.login-form .login-password').placeholder();
+	$('.login .login-id').placeholder();
+	$('.login .login-password').placeholder();
 
-	$('.login-form .login-submit').click(function (ev) {
+	$('.login .login-submit').click(function (ev) {
 		var $form = $(ev.currentTarget).parent();
 		self.processForm($form);
 		ev.preventDefault();
-	});
-	$('.login-form input').keypress(function (ev) {
-		var $form;
-		if (ev.which === 13) {
-			$form = $(ev.currentTarget).parent();
-			self.processForm($form);
-		}
 	});
 };
 

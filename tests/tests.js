@@ -1,6 +1,6 @@
 define(['login'], function(LoginComponent) {
 	test('test initialize', function() {
-		var fakeEvent, $el = $('<form class="login-form"><input class="login-submit" /></form>');
+		var fakeEvent, $el = $('<section class="login"><form><button class="login-submit">Button</button></form></section>');
 
 		$('body').append($el);
 
@@ -14,27 +14,14 @@ define(['login'], function(LoginComponent) {
 		// create and stub a fake event to pass to the click handlers
 		fakeEvent = jQuery.Event('click');
 		fakeEvent.currentTarget = $(".login-submit");
+		fakeEvent.preventDefault();
 		this.stub(fakeEvent, 'preventDefault');
 
 		// Test click handler for submit
-		$('.login-form .login-submit').trigger(fakeEvent);
+		$('.login .login-submit').trigger(fakeEvent);
 		equal(LoginComponent.prototype.processForm.callCount, 1, 'processForm called on click');
 		deepEqual(LoginComponent.prototype.processForm.args[0][0], $(fakeEvent.currentTarget).parent(), 'form passed to processForm');
 		equal(fakeEvent.preventDefault.callCount, 1, 'preventDefault called');
-
-		// Test keypress handler, Enter hit
-		fakeEvent = jQuery.Event('keypress');
-		fakeEvent.currentTarget = $(".login-submit");
-		fakeEvent.which = 13;
-
-		$('.login-form input').trigger(fakeEvent);
-		equal(LoginComponent.prototype.processForm.callCount, 2, 'processForm called on enter hit');
-		deepEqual(LoginComponent.prototype.processForm.args[1][0], $(fakeEvent.currentTarget).parent(), 'form passed to processForm');
-
-		// Test keypress handler, Enter not hit
-		fakeEvent.which = 12;
-		$('.login-form input').trigger(fakeEvent);
-		equal(LoginComponent.prototype.processForm.callCount, 2, 'processForm not called on any other keypress');
 
 		$('.login-form').remove();
 	});
